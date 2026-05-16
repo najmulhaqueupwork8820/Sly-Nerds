@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sly Nerds — 20-Day Social Media Content Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --sly-blue: #0f328a;
+    --sly-yellow: #FFD520;
+    --deep-ink: #0f1f4a;
+    --dark-navy: #0a1f6e;
+    --body-slate: #455070;
+    --border-blue: #dde3f0;
+    --muted-slate: #7a88b0;
+    --off-white: #f2f4fb;
+    --page-bg: #e8edf8;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--page-bg);
+    color: var(--body-slate);
+    padding: 40px 20px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--sly-blue);
+    border-radius: 16px;
+    padding: 48px 40px 36px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--sly-yellow);
+  }
+  .header-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+  }
+  .header h1 {
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .header h1 span { color: var(--sly-yellow); }
+  .header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .header-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 10px 16px;
+  }
+  .header-stat-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--sly-yellow);
+    letter-spacing: -0.04em;
+  }
+  .header-stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* LEGEND */
+  .legend {
+    max-width: 900px;
+    margin: 0 auto 32px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-slate);
+    margin-right: 4px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .pill-edu { background: #dde8fb; color: #0f328a; }
+  .pill-proof { background: #fff3c4; color: #7a5800; }
+  .pill-callout { background: #fde8e8; color: #8b1a1a; }
+  .pill-engage { background: #e2f5ec; color: #1a6640; }
+  .pill-offer { background: #0f1f4a; color: #FFD520; }
+
+  /* GRID */
+  .calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border-blue);
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,50,138,0.10);
+  }
+  .card-top {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: stretch;
+  }
+  .card-day {
+    background: var(--sly-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 8px;
+    min-width: 64px;
+  }
+  .card-day-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--sly-yellow);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .card-day-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+  .card-body {
+    padding: 18px 20px;
+    flex: 1;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .card-platform {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-slate);
+    background: var(--off-white);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .card-headline {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--deep-ink);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .card-headline span { color: var(--sly-blue); }
+  .card-copy {
+    font-size: 13.5px;
+    line-height: 1.72;
+    color: var(--body-slate);
+    margin-bottom: 10px;
+  }
+  .card-copy strong { color: var(--deep-ink); font-weight: 700; }
+  .card-hashtags {
+    font-size: 12px;
+    color: var(--muted-slate);
+    line-height: 1.6;
+  }
+  .card-side {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    min-width: 100px;
+    border-left: 1px solid var(--border-blue);
+  }
+  .card-hook {
+    font-size: 11px;
+    color: var(--muted-slate);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .card-hook strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-slate);
+    margin-bottom: 2px;
+  }
+
+  /* WEEK DIVIDER */
+  .week-divider {
+    max-width: 900px;
+    margin: 8px auto 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .week-divider-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted-slate);
+    white-space: nowrap;
+  }
+  .week-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-blue);
+  }
+
+  /* CTA FOOTER */
+  .cta-footer {
+    max-width: 900px;
+    margin: 40px auto 0;
+    background: var(--sly-yellow);
+    border-radius: 12px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-footer-text h3 {
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--deep-ink);
+    margin-bottom: 6px;
+  }
+  .cta-footer-text p {
+    font-size: 14px;
+    color: var(--body-slate);
+  }
+  .cta-btn {
+    background: var(--sly-blue);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    .header h1 { font-size: 32px; }
+    .card-top { grid-template-columns: 52px 1fr; }
+    .card-side { display: none; }
+    .header { padding: 32px 24px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-label">▪ Sly Nerds &nbsp;·&nbsp; Internal Use Only</div>
+  <h1>20-Day<br><span>Social</span><br>Calendar</h1>
+  <p>Every post follows the brand voice. Direct. Honest. A little dry. No jargon. No filler. Marketing that actually works.</p>
+  <div class="header-meta">
+    <div class="header-stat"><div class="header-stat-num">20</div><div class="header-stat-label">Posts ready</div></div>
+    <div class="header-stat"><div class="header-stat-num">5</div><div class="header-stat-label">Content types</div></div>
+    <div class="header-stat"><div class="header-stat-num">4</div><div class="header-stat-label">Weeks covered</div></div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend-label">Type:</span>
+  <span class="pill pill-edu">📘 Educational</span>
+  <span class="pill pill-proof">⭐ Social Proof</span>
+  <span class="pill pill-callout">🔥 Callout</span>
+  <span class="pill pill-engage">💬 Engagement</span>
+  <span class="pill pill-offer">🎯 Offer</span>
+</div>
+
+<!-- CALENDAR -->
+<div class="calendar">
+
+  <!-- WEEK 1 -->
+  <div class="week-divider"><span class="week-divider-label">Week 1 — Hook Hard</span><div class="week-divider-line"></div></div>
+
+  <!-- Day 1 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">01</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Instagram</span>
+          <span class="pill pill-callout">🔥 Callout</span>
+        </div>
+        <div class="card-headline">Your site <span>isn't</span> your problem.</div>
+        <div class="card-copy">
+          Most businesses think they need a new website.<br>
+          They don't. They need their <strong>current site to actually work.</strong><br><br>
+          Speed. Copy. CTA placement. Trust signals.<br>
+          Fix those four things and your site converts. Simple as that.<br><br>
+          We've fixed sites that were "ugly" and watched leads double in 60 days.<br>
+          Design is last. Function is first.
+        </div>
+        <div class="card-hashtags">#WebDesign #ConversionOptimization #DigitalMarketing #SlyNerds #MarketingThatWorks</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Counterintuitive claim</div>
+        <div class="card-hook"><strong>Goal</strong>Stop the scroll. Challenge assumption.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">02</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Facebook · LinkedIn</span>
+          <span class="pill pill-edu">📘 Educational</span>
+        </div>
+        <div class="card-headline">The <span>5-touch</span> rule nobody follows.</div>
+        <div class="card-copy">
+          The average lead needs 5–8 touchpoints before they buy.<br>
+          Most businesses follow up once. Maybe twice. Then go cold.<br><br>
+          That's not a dead lead. That's an <strong>untouched one.</strong><br><br>
+          Your CRM is a goldmine you haven't dug yet.<br>
+          Stop chasing new traffic. Start working what you already have.
+        </div>
+        <div class="card-hashtags">#LeadGeneration #SalesStrategy #CRM #SmallBusiness #MarketingTips</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Stat + reframe</div>
+        <div class="card-hook"><strong>Goal</strong>Educate. Build authority.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">03</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Instagram · Facebook</span>
+          <span class="pill pill-engage">💬 Engagement</span>
+        </div>
+        <div class="card-headline">Be honest: <span>when did you</span> last check your PageSpeed score?</div>
+        <div class="card-copy">
+          Most sites we audit score between 40 and 65.<br>
+          Almost always fixable in a single sprint.<br><br>
+          90+ — You're good. Move on.<br>
+          Below 70 — You're actively losing ground. Fixable.<br>
+          Below 50 — You are handing leads to your competitor. Not fixable tomorrow, but fixable fast.<br><br>
+          Drop your score in the comments. No judgment. Just data.
+        </div>
+        <div class="card-hashtags">#PageSpeed #SEO #WebPerformance #GoogleCoreWebVitals #SlyNerds</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Direct question</div>
+        <div class="card-hook"><strong>Goal</strong>Comments + engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">04</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn</span>
+          <span class="pill pill-proof">⭐ Social Proof</span>
+        </div>
+        <div class="card-headline">What <span>98%</span> client retention actually means.</div>
+        <div class="card-copy">
+          It means we don't do "project's done, bye."<br>
+          It means your success is our success. For real.<br><br>
+          We've been the team behind businesses in Las Vegas and beyond — handling everything from the website to the ads to the AI tools running in the background.<br><br>
+          <strong>"This team is so professional, kind and patient. They are transparent with pricing and skilled at their craft."</strong><br>
+          — Chuck Elliott, Web Design Client ⭐⭐⭐⭐⭐
+        </div>
+        <div class="card-hashtags">#ClientRetention #AgencyLife #DigitalMarketing #LasVegas #Testimonial</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Stat + real review</div>
+        <div class="card-hook"><strong>Goal</strong>Trust. Credibility.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">05</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Instagram · LinkedIn</span>
+          <span class="pill pill-offer">🎯 Offer</span>
+        </div>
+        <div class="card-headline">Free audit. <span>No pitch.</span> No pressure.</div>
+        <div class="card-copy">
+          We'll look at your site, your ads, your SEO — and tell you exactly what's broken and what it's costing you.<br><br>
+          Not a "strategy session" that's actually a sales call.<br>
+          Just an honest look at what's working and what isn't.<br><br>
+          No commitment. Just a conversation about your goals.<br>
+          Book yours at <strong>slynerds.com/contact</strong>
+        </div>
+        <div class="card-hashtags">#FreeAudit #DigitalMarketing #SmallBusiness #MarketingAgency #SlyNerds</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Low-pressure CTA</div>
+        <div class="card-hook"><strong>Goal</strong>Lead generation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-divider"><span class="week-divider-label">Week 2 — Build Authority</span><div class="week-divider-line"></div></div>
+
+  <!-- Day 6 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">06</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Facebook</span>
+          <span class="pill pill-callout">🔥 Callout</span>
+        </div>
+        <div class="card-headline">More traffic isn't <span>your problem.</span></div>
+        <div class="card-copy">
+          You have enough people visiting your site.<br>
+          They're just leaving without doing anything.<br><br>
+          Conversion rate of 2%? Get it to 4% — <strong>same traffic, same ad spend, double the leads.</strong><br><br>
+          Before you spend another dollar on ads, fix the thing the traffic is landing on.<br>
+          Gut feelings are cool for lunch orders. For your business? We use actual data.
+        </div>
+        <div class="card-hashtags">#CRO #ConversionRate #PaidAds #GoogleAds #MarketingStrategy</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>The Callout pattern</div>
+        <div class="card-hook"><strong>Goal</strong>Reframe thinking. Drive DMs.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">07</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Instagram</span>
+          <span class="pill pill-edu">📘 Educational</span>
+        </div>
+        <div class="card-headline">SMS open rate: <span>98%.</span> Email: 25%.</div>
+        <div class="card-copy">
+          If you're not texting your leads, you're leaving revenue on the table. Period.<br><br>
+          This isn't a hot take. This is just the number.<br>
+          People don't ignore their texts the way they ignore their inbox.<br><br>
+          Set up a simple follow-up sequence. It takes one afternoon.<br>
+          The businesses that figure this out first win. Don't be late.
+        </div>
+        <div class="card-hashtags">#SMSMarketing #LeadNurture #MarketingTips #BusinessGrowth #DigitalMarketing</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Hard stat opener</div>
+        <div class="card-hook"><strong>Goal</strong>Educate. Shares.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">08</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Facebook</span>
+          <span class="pill pill-callout">🔥 Callout</span>
+        </div>
+        <div class="card-headline">Sick of agencies <span>ghosting you?</span></div>
+        <div class="card-copy">
+          You shouldn't have to chase your own marketing team for an update.<br>
+          You shouldn't get a vague report that explains nothing.<br>
+          You shouldn't wonder what your ad budget actually bought.<br><br>
+          We respond same day. We send reports that make sense.<br>
+          We tell you what's working, what isn't, and what we're doing about it.<br><br>
+          <strong>Revolutionary, right?</strong>
+        </div>
+        <div class="card-hashtags">#MarketingAgency #ClientCommunication #TransparentMarketing #SlyNerds #LasVegas</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Pain agitation</div>
+        <div class="card-hook"><strong>Goal</strong>Resonance. DMs.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 9 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">09</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Instagram · LinkedIn</span>
+          <span class="pill pill-edu">📘 Educational</span>
+        </div>
+        <div class="card-headline">What <span>good SEO</span> actually looks like.</div>
+        <div class="card-copy">
+          It's not keyword stuffing.<br>
+          It's not paying someone $99/month to "optimize" your site.<br>
+          It's not making empty promises about page one.<br><br>
+          Real SEO is technical fixes. Genuine content strategy. Link building that makes sense.<br>
+          Real traffic from real searches by real people who actually want what you sell.<br><br>
+          If your SEO person can't explain what they did last month in plain English — that's a red flag.
+        </div>
+        <div class="card-hashtags">#SEO #SearchEngineOptimization #OrganicTraffic #DigitalMarketing #MarketingTips</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>What it's NOT</div>
+        <div class="card-hook"><strong>Goal</strong>Education. Trust.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 10 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">10</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Facebook · Instagram</span>
+          <span class="pill pill-engage">💬 Engagement</span>
+        </div>
+        <div class="card-headline">What's <span>the one thing</span> about your marketing that drives you crazy?</div>
+        <div class="card-copy">
+          Seriously. Tell us.<br><br>
+          Is it that you don't know where your leads are coming from?<br>
+          Is it that your social posts get zero engagement?<br>
+          Is it that your website looks great but doesn't convert?<br><br>
+          Drop it in the comments. We read every single one.<br>
+          And if we have a straight answer — we'll give it to you. No sales pitch.
+        </div>
+        <div class="card-hashtags">#MarketingProblems #AskAnything #SmallBusiness #DigitalMarketing #SlyNerds</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Open question</div>
+        <div class="card-hook"><strong>Goal</strong>Comments. DMs. Intel.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week-divider"><span class="week-divider-label">Week 3 — Prove It</span><div class="week-divider-line"></div></div>
+
+  <!-- Day 11 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">11</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn</span>
+          <span class="pill pill-proof">⭐ Social Proof</span>
+        </div>
+        <div class="card-headline">Same budget. <span>3× the leads.</span></div>
+        <div class="card-copy">
+          We took over a client's Google Ads account that had been running for 18 months.<br>
+          No one had touched the targeting in six months. Budget was burning.<br><br>
+          In 90 days: <strong>3× more leads. 54% lower cost per lead.</strong><br><br>
+          We didn't spend more. We stopped spending on what wasn't working.<br>
+          That's not magic. That's what happens when someone actually manages your ads.
+        </div>
+        <div class="card-hashtags">#GoogleAds #PaidMedia #CaseStudy #ROI #MarketingResults</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>The Promise pattern</div>
+        <div class="card-hook"><strong>Goal</strong>Credibility. Leads.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 12 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">12</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Instagram · Facebook</span>
+          <span class="pill pill-edu">📘 Educational</span>
+        </div>
+        <div class="card-headline">Your competitor <span>has a template site.</span></div>
+        <div class="card-copy">
+          It looks like every other site in your industry.<br>
+          Same stock photo of someone in a suit shaking hands.<br>
+          Same "Welcome to our website" headline. Same colors.<br><br>
+          We build everything from scratch so you actually stand out.<br>
+          Not because templates are evil — because <strong>you don't want to look like everyone else.</strong><br><br>
+          Your site is usually the first impression. Make it count.
+        </div>
+        <div class="card-hashtags">#WebDesign #CustomWebsite #Branding #DigitalMarketing #StandOut</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Competitor comparison</div>
+        <div class="card-hook"><strong>Goal</strong>Differentiation story</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 13 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">13</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Instagram</span>
+          <span class="pill pill-callout">🔥 Callout</span>
+        </div>
+        <div class="card-headline">AI isn't going to <span>save your business.</span> Using it right might.</div>
+        <div class="card-copy">
+          Every vendor is selling you "AI-powered" something right now.<br>
+          Most of it is hype wrapped in a chatbot that doesn't actually help anyone.<br><br>
+          We build custom AI because it makes sense for the business — not because it's trendy.<br>
+          Chatbots that help. Automation that saves real time. Integrations that make your team faster.<br><br>
+          <strong>No hype. Just what's needed.</strong>
+        </div>
+        <div class="card-hashtags">#AIMarketing #BusinessAutomation #AITools #SmallBusiness #SlyNerds</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Industry BS callout</div>
+        <div class="card-hook"><strong>Goal</strong>Trust. AI service leads.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 14 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">14</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Facebook</span>
+          <span class="pill pill-engage">💬 Engagement</span>
+        </div>
+        <div class="card-headline">Quick poll: <span>what's killing</span> your marketing right now?</div>
+        <div class="card-copy">
+          A) No time to do it consistently<br>
+          B) No budget to do it right<br>
+          C) No idea what's actually working<br>
+          D) I hired someone and it still didn't work<br><br>
+          Vote in the comments. We're genuinely curious — and we'll respond to every one.<br>
+          This is how we figure out what to talk about next.
+        </div>
+        <div class="card-hashtags">#MarketingPoll #SmallBusiness #MarketingStrategy #DigitalMarketing #SlyNerds</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Poll / vote</div>
+        <div class="card-hook"><strong>Goal</strong>Max engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 15 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">15</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Instagram</span>
+          <span class="pill pill-offer">🎯 Offer</span>
+        </div>
+        <div class="card-headline">No hidden fees. <span>No surprise invoices.</span></div>
+        <div class="card-copy">
+          We tell you exactly what things cost before we start.<br>
+          Revolutionary, right?<br><br>
+          No contracts that trap you.<br>
+          No mysterious strategies you can't see into.<br>
+          No "trust us, it's working" without the data to back it up.<br><br>
+          Just good work. Clear pricing. Honest results.<br>
+          When you're ready — <strong>slynerds.com/contact</strong>
+        </div>
+        <div class="card-hashtags">#TransparentPricing #MarketingAgency #HonestMarketing #SlyNerds #SmallBusiness</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Differentiation + CTA</div>
+        <div class="card-hook"><strong>Goal</strong>Direct leads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week-divider"><span class="week-divider-label">Week 4 — Close Strong</span><div class="week-divider-line"></div></div>
+
+  <!-- Day 16 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">16</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Facebook</span>
+          <span class="pill pill-edu">📘 Educational</span>
+        </div>
+        <div class="card-headline">Your social media shouldn't <span>make people cringe.</span></div>
+        <div class="card-copy">
+          Generic stock photos. Inspirational quotes that have nothing to do with your business. Hashtag spam.<br><br>
+          That's not a social media strategy. That's noise.<br><br>
+          Your social presence should sound like you. Not like a brand template.<br>
+          People follow people, not logos. Give them something real.<br><br>
+          <strong>We manage social that doesn't make you want to look away.</strong>
+        </div>
+        <div class="card-hashtags">#SocialMediaMarketing #ContentStrategy #SocialMedia #BrandVoice #DigitalMarketing</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Industry pain + solution</div>
+        <div class="card-hook"><strong>Goal</strong>Social mgmt leads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 17 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">17</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">Instagram</span>
+          <span class="pill pill-proof">⭐ Social Proof</span>
+        </div>
+        <div class="card-headline">15+ years. <span>200+ projects.</span> Still here.</div>
+        <div class="card-copy">
+          A lot of agencies come and go.<br>
+          They launch. They overpromise. They disappear.<br><br>
+          We've been doing this for over 15 years.<br>
+          200+ projects delivered. 98% of clients still with us.<br><br>
+          That's not luck. That's what happens when you actually do the work and actually care about the result.<br>
+          We're the team you wish you had from the start.
+        </div>
+        <div class="card-hashtags">#AgencyLife #DigitalMarketing #LasVegas #MarketingAgency #ClientSuccess</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>Heritage + stats</div>
+        <div class="card-hook"><strong>Goal</strong>Brand trust</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 18 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">18</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">LinkedIn · Facebook</span>
+          <span class="pill pill-callout">🔥 Callout</span>
+        </div>
+        <div class="card-headline">Is your site <span>bleeding traffic?</span></div>
+        <div class="card-copy">
+          You're running ads. Getting clicks. Paying per visit.<br>
+          And most of those visitors leave in under 10 seconds.<br><br>
+          Before you scale — figure out why.<br>
+          Wrong audience? Slow site? Confusing layout? Weak offer?<br><br>
+          We dig into your goals, your audience, and your market before touching a single pixel.<br>
+          Strategy first. Always.
+        </div>
+        <div class="card-hashtags">#PaidAds #WebTraffic #ConversionOptimization #MarketingStrategy #SlyNerds</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>The Question pattern</div>
+        <div class="card-hook"><strong>Goal</strong>Audit leads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 19 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">19</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">All platforms</span>
+          <span class="pill pill-edu">📘 Educational</span>
+        </div>
+        <div class="card-headline">The team you wish you had <span>from the start.</span></div>
+        <div class="card-copy">
+          Web. SEO. Paid ads. AI. Social. Content.<br>
+          Most businesses piece this together with 4 different vendors who don't talk to each other.<br><br>
+          One team. One strategy. Everything connected.<br>
+          That's how it should work. That's how we work.<br><br>
+          Your marketing doesn't have to feel like herding cats.<br>
+          <strong>We handle the whole stack.</strong>
+        </div>
+        <div class="card-hashtags">#FullServiceAgency #DigitalMarketing #MarketingStrategy #SlyNerds #SmallBusiness</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>One-stop positioning</div>
+        <div class="card-hook"><strong>Goal</strong>Full retainer leads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 20 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-day"><div class="card-day-num">20</div><div class="card-day-label">Day</div></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-platform">All platforms</span>
+          <span class="pill pill-offer">🎯 Offer</span>
+        </div>
+        <div class="card-headline">Finally. A marketing agency <span>that doesn't lie.</span></div>
+        <div class="card-copy">
+          No jargon. No vague reports. No "trust us, it's working."<br>
+          No hiding behind buzzwords. No overpromising on page one rankings.<br>
+          No surprise invoices. No ghosting.<br><br>
+          Just honest work. Real results. A team that's in it with you for the long haul.<br><br>
+          If you've been burned before — we get it. That's exactly why we built Sly Nerds.<br>
+          <strong>Book a free, no-pressure audit: slynerds.com/contact</strong>
+        </div>
+        <div class="card-hashtags">#MarketingThatWorks #HonestMarketing #SlyNerds #DigitalMarketing #FreeAudit</div>
+      </div>
+      <div class="card-side">
+        <div class="card-hook"><strong>Hook type</strong>The Declaration</div>
+        <div class="card-hook"><strong>Goal</strong>Brand statement + leads</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA FOOTER -->
+<div class="cta-footer">
+  <div class="cta-footer-text">
+    <h3>Book Your Free Audit</h3>
+    <p>No sales pitch. No pressure. Just a straight conversation about your goals.</p>
+  </div>
+  <a href="https://slynerds.com/contact" class="cta-btn">slynerds.com/contact →</a>
+</div>
+
+</body>
+</html>
